@@ -17,7 +17,7 @@ import {
   DrawerOverlay,
 } from "@chakra-ui/modal";
 import { Tooltip } from "@chakra-ui/tooltip";
-import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { BellIcon, ChevronDownIcon, AddIcon } from "@chakra-ui/icons";
 import { Avatar } from "@chakra-ui/avatar";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -31,12 +31,15 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+import Signup from "../Authentication/Signup";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from "@chakra-ui/react";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   const {
     setSelectedChat,
@@ -122,6 +125,9 @@ function SideDrawer() {
     }
   };
 
+  const openSignup = () => setIsSignupOpen(true);
+  const closeSignup = () => setIsSignupOpen(false);
+
   return (
     <>
       <Box
@@ -144,7 +150,7 @@ function SideDrawer() {
         <Text fontSize="2xl" fontFamily="Work sans">
           Talk-A-Tive
         </Text>
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Menu>
             <MenuButton p={1}>
               <NotificationBadge
@@ -170,6 +176,11 @@ function SideDrawer() {
               ))}
             </MenuList>
           </Menu>
+          {user && user.isAdmin && (
+            <Button ml={2} colorScheme="teal" leftIcon={<AddIcon />} onClick={openSignup}>
+              Add User
+            </Button>
+          )}
           <Menu>
             <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
               <Avatar
@@ -219,6 +230,17 @@ function SideDrawer() {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+
+      <Modal isOpen={isSignupOpen} onClose={closeSignup} isCentered size="lg">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add New User</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Signup />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
