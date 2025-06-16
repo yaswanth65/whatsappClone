@@ -50,7 +50,7 @@ function Homepage() {
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
             <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab>Admin Login</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

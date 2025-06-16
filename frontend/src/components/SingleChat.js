@@ -239,13 +239,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Input
-                variant="filled"
-                bg="#E0E0E0"
-                placeholder="Enter a message.."
-                value={newMessage}
-                onChange={typingHandler}
-              />
+           <Input
+  style={{ color: "black", backgroundColor: "black", border: "2px solid black" }}
+  placeholder="Enter a message.."
+  value={newMessage}
+  onChange={typingHandler}
+/>
+
+
             </FormControl>
           </Box>
         </>
