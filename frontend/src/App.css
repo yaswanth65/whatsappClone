@@ -1,22 +1,156 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap");
 
 .App {
   min-height: 100vh;
   display: flex;
-  background-image: url("./background.png");
-  background-position: center;
-  background-size: cover;
+  /* Replace background image with gradient theme from hackathon */
+  background: linear-gradient(135deg, #1a237e 0%, #283593 25%, #3949ab 50%, #5c6bc0 75%, #7986cb 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Add animated background elements like in the hackathon design */
+.App::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.App::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(63, 81, 181, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* Add subtle grid pattern overlay */
+.App {
+  background-image: 
+    linear-gradient(135deg, #1a237e 0%, #283593 25%, #3949ab 50%, #5c6bc0 75%, #7986cb 100%),
+    radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(63, 81, 181, 0.1) 0%, transparent 50%);
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.281);
+  background: linear-gradient(180deg, #00ffff 0%, #3f51b5 100%);
+  border-radius: 4px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(180deg, #00e5ff 0%, #303f9f 100%);
+}
+
+/* Add these styles to your existing CSS file or create a separate one for homepage */
+
+/* Enhanced glass morphism effect for containers */
+.chakra-ui-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override Chakra UI Box styles to match theme */
+.homepage-header-box {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.homepage-content-box {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the main title */
+.homepage-title {
+  background: linear-gradient(135deg, #00ffff 0%, #ffffff 50%, #64b5f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  font-weight: 700 !important;
+}
+
+/* Tab styling to match theme */
+.chakra-tabs__tab {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.chakra-tabs__tab[aria-selected="true"] {
+  background: linear-gradient(135deg, #00ffff 0%, #3f51b5 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3) !important;
+}
+
+.chakra-tabs__tab:hover {
+  color: #00ffff !important;
+  transform: translateY(-2px);
+}
+
+/* Form input styling */
+.chakra-input,
+.chakra-select {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  backdrop-filter: blur(10px);
+}
+
+.chakra-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.chakra-input:focus {
+  border-color: #00ffff !important;
+  box-shadow: 0 0 0 1px #00ffff !important;
+}
+
+/* Button styling */
+.chakra-button {
+  background: linear-gradient(135deg, #00ffff 0%, #3f51b5 100%) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+}
+
+.chakra-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4) !important;
+  background: linear-gradient(135deg, #00e5ff 0%, #303f9f 100%) !important;
+}
+
+/* Label styling */
+.chakra-form__label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500 !important;
 }
