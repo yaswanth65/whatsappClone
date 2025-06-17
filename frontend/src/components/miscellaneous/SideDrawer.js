@@ -148,7 +148,7 @@ function SideDrawer() {
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+          Prison Project Discussion
         </Text>
         <div style={{ display: "flex", alignItems: "center" }}>
           <Menu>
@@ -159,7 +159,7 @@ function SideDrawer() {
               />
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
-            <MenuList pl={2}>
+            <MenuList pl={2} zIndex={1500}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
                 <MenuItem
@@ -190,7 +190,7 @@ function SideDrawer() {
                 src={user.pic}
               />
             </MenuButton>
-            <MenuList>
+            <MenuList zIndex={1500}>
               <ProfileModal user={user}>
                 <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
@@ -201,7 +201,7 @@ function SideDrawer() {
         </div>
       </Box>
 
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen} zIndex={2000}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
@@ -231,7 +231,7 @@ function SideDrawer() {
         </DrawerContent>
       </Drawer>
 
-      <Modal isOpen={isSignupOpen} onClose={closeSignup} isCentered size="lg">
+      <Modal isOpen={isSignupOpen} onClose={closeSignup} isCentered size="lg" zIndex={2500}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add New User</ModalHeader>
